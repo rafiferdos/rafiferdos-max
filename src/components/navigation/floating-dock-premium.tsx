@@ -88,11 +88,11 @@ const FloatingDockMobile = ({
 
       <motion.button
         onClick={() => setOpen(!open)}
-        className="relative h-14 w-14 rounded-2xl backdrop-blur-xl bg-white/10 dark:bg-black/10 border border-white/20 dark:border-white/10 shadow-2xl"
+        className="relative h-14 w-14 rounded-full backdrop-blur-xl bg-white/10 dark:bg-black/10 border border-white/20 dark:border-white/10 shadow-2xl"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/20 to-transparent dark:from-white/10" />
+        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 to-transparent dark:from-white/10" />
         <div className="relative flex h-full w-full items-center justify-center">
           <motion.div
             animate={{ rotate: open ? 45 : 0 }}
@@ -137,7 +137,7 @@ const MobileIconContainer = ({ item }: { item: DockItem }) => {
     <motion.div
       onClick={handleClick}
       className={cn(
-        "relative h-12 w-12 rounded-xl cursor-pointer backdrop-blur-xl border shadow-2xl",
+        "relative h-12 w-12 rounded-full cursor-pointer backdrop-blur-xl border shadow-2xl",
         item.isActive
           ? "bg-white/20 dark:bg-white/15 border-white/30 dark:border-white/20"
           : "bg-white/10 dark:bg-black/10 border-white/20 dark:border-white/10"
@@ -145,9 +145,9 @@ const MobileIconContainer = ({ item }: { item: DockItem }) => {
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
     >
-      <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/20 to-transparent dark:from-white/10" />
+      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 to-transparent dark:from-white/10" />
       {item.isActive && (
-        <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/30 to-white/10 dark:from-white/20 dark:to-white/5" />
+        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/30 to-white/10 dark:from-white/20 dark:to-white/5" />
       )}
       <div className="relative flex h-full w-full items-center justify-center">
         <div className="h-5 w-5 text-gray-700 dark:text-gray-300">
@@ -172,7 +172,7 @@ const FloatingDockDesktop = ({
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        "mx-auto hidden md:flex h-16 items-end gap-4 px-6 py-3 rounded-2xl backdrop-blur-xl bg-white/10 dark:bg-black/10 border border-white/20 dark:border-white/10 shadow-2xl relative",
+        "mx-auto hidden md:flex h-16 items-end gap-4 px-6 py-3 rounded-full backdrop-blur-xl bg-white/10 dark:bg-black/10 border border-white/20 dark:border-white/10 shadow-2xl relative",
         className
       )}
       initial={{ y: 100, opacity: 0 }}
@@ -180,8 +180,8 @@ const FloatingDockDesktop = ({
       transition={{ type: "spring", stiffness: 300, damping: 30 }}
     >
       {/* Glass morphism background - lower z-index */}
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/20 to-transparent dark:from-white/10 -z-10" />
-      <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-white/5 to-transparent -z-10" />
+      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 to-transparent dark:from-white/10 -z-10" />
+      <div className="absolute inset-0 rounded-full bg-gradient-to-t from-white/5 to-transparent -z-10" />
 
       {/* Icons container with higher z-index */}
       <div className="relative z-10 flex items-end gap-4">
@@ -274,7 +274,7 @@ function IconContainer({
       {/* Glass container */}
       <motion.div
         className={cn(
-          "absolute inset-0 rounded-2xl backdrop-blur-xl border shadow-2xl",
+          "absolute inset-0 rounded-full backdrop-blur-xl border shadow-2xl",
           item.isActive
             ? "bg-white/20 dark:bg-white/15 border-white/30 dark:border-white/20"
             : "bg-white/10 dark:bg-black/10 border-white/20 dark:border-white/10"
@@ -285,10 +285,10 @@ function IconContainer({
         }}
       >
         {/* Glass morphism layers */}
-        <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/20 to-transparent dark:from-white/10" />
+        <div className="absolute inset-0 rounded-full bg-gradient-to-br from-white/20 to-transparent dark:from-white/10" />
         {item.isActive && (
           <motion.div
-            className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/30 to-white/10 dark:from-white/20 dark:to-white/5"
+            className="absolute inset-0 rounded-full bg-gradient-to-br from-white/30 to-white/10 dark:from-white/20 dark:to-white/5"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
@@ -302,7 +302,7 @@ function IconContainer({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/25 to-white/5 dark:from-white/15 dark:to-white/0"
+              className="absolute inset-0 rounded-full bg-gradient-to-br from-white/25 to-white/5 dark:from-white/15 dark:to-white/0"
             />
           )}
         </AnimatePresence>
@@ -323,7 +323,7 @@ function IconContainer({
             initial={{ opacity: 0, y: 10, x: "-50%" }}
             animate={{ opacity: 1, y: 0, x: "-50%" }}
             exit={{ opacity: 0, y: 5, x: "-50%" }}
-            className="absolute -top-16 left-1/2 px-3 py-2 rounded-lg text-xs font-medium whitespace-nowrap backdrop-blur-xl bg-white/90 dark:bg-black/80 border border-white/20 dark:border-white/10 text-gray-700 dark:text-gray-300 shadow-2xl z-50"
+            className="absolute -top-16 left-1/2 px-3 py-2 rounded-full text-xs font-medium whitespace-nowrap backdrop-blur-xl bg-white/90 dark:bg-black/80 border border-white/20 dark:border-white/10 text-gray-700 dark:text-gray-300 shadow-2xl z-50"
           >
             {item.title}
           </motion.div>
