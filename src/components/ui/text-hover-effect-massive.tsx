@@ -104,7 +104,8 @@ export const TextHoverEffectMassive = ({
           className="fill-transparent stroke-neutral-300 dark:stroke-neutral-600 font-bold"
           style={{
             fontSize: "120px",
-            fontFamily: "system-ui, -apple-system, sans-serif",
+            fontFamily:
+              "var(--font-uncial-antiqua), system-ui, -apple-system, sans-serif",
             letterSpacing: "0.05em",
             fontWeight: "900",
           }}
@@ -134,7 +135,8 @@ export const TextHoverEffectMassive = ({
             className="fill-transparent font-bold"
             style={{
               fontSize: "120px",
-              fontFamily: "system-ui, -apple-system, sans-serif",
+              fontFamily:
+                "var(--font-uncial-antiqua), system-ui, -apple-system, sans-serif",
               letterSpacing: "0.05em",
               fontWeight: "900",
             }}
