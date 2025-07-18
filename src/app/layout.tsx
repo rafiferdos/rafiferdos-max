@@ -1,5 +1,6 @@
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { SmoothScrollProvider } from "@/components/navigation/smooth-scroll";
+import { PreloaderProvider } from "@/components/ui/preloader-provider";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -35,9 +36,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <SmoothScrollProvider>
-            {children}
-          </SmoothScrollProvider>
+          <PreloaderProvider duration={2000}>
+            <SmoothScrollProvider>
+              {children}
+            </SmoothScrollProvider>
+          </PreloaderProvider>
         </ThemeProvider>
       </body>
     </html>
