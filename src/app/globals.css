@@ -122,3 +122,28 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Glass morphism effects */
+@layer utilities {
+  .glass-morphism {
+    @apply backdrop-blur-xl bg-white/10 dark:bg-black/10 border border-white/20 dark:border-white/10;
+  }
+
+  .glass-morphism-active {
+    @apply backdrop-blur-xl bg-white/20 dark:bg-white/15 border border-white/30 dark:border-white/20;
+  }
+}
+
+/* Enhanced smooth scrolling */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Fix for mobile viewport */
+@supports (height: 100dvh) {
+  .min-h-screen {
+    min-height: 100dvh;
+  }
+}
