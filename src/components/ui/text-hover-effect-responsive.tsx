@@ -36,7 +36,7 @@ export const TextHoverEffectResponsive = ({
   useEffect(() => {
     const timer = setTimeout(() => {
       setHovered(true);
-    }, 500);
+    }, 200);
     return () => clearTimeout(timer);
   }, []);
 
@@ -156,7 +156,7 @@ export const TextHoverEffectResponsive = ({
             strokeDasharray: 2000,
           }}
           transition={{
-            duration: 3,
+            duration: 2,
             ease: "easeInOut",
           }}
         >
