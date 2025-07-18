@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
-import { TextHoverEffectResponsive } from "./text-hover-effect-responsive";
+import { TextHoverEffectMassive } from "./text-hover-effect-massive";
 
 export const Preloader = ({
   onComplete,
@@ -44,10 +44,10 @@ export const Preloader = ({
           className="fixed inset-0 z-[9999] flex items-center justify-center bg-white dark:bg-black"
         >
           {/* Text Container */}
-          <div className="relative w-full h-32 sm:h-40 md:h-48 lg:h-56 xl:h-64">
+          <div className="relative w-full h-48 sm:h-56 md:h-64 lg:h-72 xl:h-80">
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-full max-w-[80%] aspect-[3/1] relative">
-                <TextHoverEffectResponsive text="RAFI FERDOS" duration={0.3} />
+              <div className="w-full max-w-[90%] relative">
+                <TextHoverEffectMassive text="RAFI FERDOS" duration={0.3} />
               </div>
             </div>
           </div>

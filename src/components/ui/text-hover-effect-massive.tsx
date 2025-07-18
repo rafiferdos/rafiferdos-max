@@ -2,9 +2,9 @@
 import { motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
-export const TextHoverEffectResponsive = ({
+export const TextHoverEffectMassive = ({
   text,
-  duration,
+  duration = 0.3,
   className = "",
 }: {
   text: string;
@@ -15,10 +15,6 @@ export const TextHoverEffectResponsive = ({
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
   const [maskPosition, setMaskPosition] = useState({ cx: "50%", cy: "50%" });
-  const [svgDimensions, setSvgDimensions] = useState({
-    width: 800,
-    height: 200,
-  });
 
   useEffect(() => {
     if (svgRef.current && cursor.x !== null && cursor.y !== null) {
@@ -36,44 +32,17 @@ export const TextHoverEffectResponsive = ({
   useEffect(() => {
     const timer = setTimeout(() => {
       setHovered(true);
-    }, 200);
+    }, 300);
     return () => clearTimeout(timer);
   }, []);
 
-  // Responsive dimensions based on text length
-  useEffect(() => {
-    const calculateDimensions = () => {
-      const textLength = text.length;
-      const baseWidth = Math.max(400, textLength * 60);
-      const baseHeight = Math.max(120, baseWidth * 0.25);
-      setSvgDimensions({ width: baseWidth, height: baseHeight });
-    };
-
-    calculateDimensions();
-    window.addEventListener("resize", calculateDimensions);
-    return () => window.removeEventListener("resize", calculateDimensions);
-  }, [text]);
-
-  // Shared text style to ensure identical sizing
-  const textStyle = {
-    fontSize: `${Math.min(
-      (svgDimensions.width / text.length) * 1.2,
-      svgDimensions.height * 0.6
-    )}px`,
-    fontFamily: "system-ui, -apple-system, sans-serif",
-    letterSpacing: "0.05em",
-    fontWeight: "bold",
-  };
-
   return (
-    <div
-      className={`w-full h-full flex items-center justify-center ${className}`}
-    >
+    <div className={`w-full h-full ${className}`}>
       <svg
         ref={svgRef}
         width="100%"
         height="100%"
-        viewBox={`0 0 ${svgDimensions.width} ${svgDimensions.height}`}
+        viewBox="0 0 1000 200"
         xmlns="http://www.w3.org/2000/svg"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
@@ -83,72 +52,99 @@ export const TextHoverEffectResponsive = ({
       >
         <defs>
           <linearGradient
-            id="textGradientResponsive"
+            id="textGradientMassive"
             gradientUnits="userSpaceOnUse"
-            cx="50%"
-            cy="50%"
-            r="25%"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="0%"
           >
             {hovered && (
               <>
                 <stop offset="0%" stopColor="#eab308" />
-                <stop offset="20%" stopColor="#ef4444" />
-                <stop offset="40%" stopColor="#3b82f6" />
-                <stop offset="60%" stopColor="#06b6d4" />
-                <stop offset="80%" stopColor="#8b5cf6" />
-                <stop offset="100%" stopColor="#f59e0b" />
+                <stop offset="16%" stopColor="#ef4444" />
+                <stop offset="33%" stopColor="#3b82f6" />
+                <stop offset="50%" stopColor="#06b6d4" />
+                <stop offset="66%" stopColor="#8b5cf6" />
+                <stop offset="83%" stopColor="#f59e0b" />
+                <stop offset="100%" stopColor="#ec4899" />
               </>
             )}
           </linearGradient>
 
           <motion.radialGradient
-            id="revealMaskResponsive"
+            id="revealMaskMassive"
             gradientUnits="userSpaceOnUse"
-            r="30%"
-            initial={{ cx: "50%", cy: "50%" }}
+            r="40%"
             animate={maskPosition}
-            transition={{ duration: duration ?? 0.3, ease: "easeOut" }}
+            transition={{ duration: duration, ease: "easeOut" }}
           >
             <stop offset="0%" stopColor="white" />
             <stop offset="100%" stopColor="black" />
           </motion.radialGradient>
 
-          <mask id="textMaskResponsive">
+          <mask id="textMaskMassive">
             <rect
               x="0"
               y="0"
               width="100%"
               height="100%"
-              fill="url(#revealMaskResponsive)"
+              fill="url(#revealMaskMassive)"
             />
           </mask>
         </defs>
 
-        {/* Single text element with conditional stroke */}
+        {/* Base stroke text */}
         <motion.text
           x="50%"
           y="50%"
           textAnchor="middle"
           dominantBaseline="middle"
-          strokeWidth="2"
-          className={`fill-transparent font-bold ${
-            !hovered ? "dark:stroke-neutral-700" : ""
-          }`}
-          style={textStyle}
-          stroke={hovered ? "url(#textGradientResponsive)" : "#9ca3af"}
-          mask={hovered ? "url(#textMaskResponsive)" : undefined}
+          strokeWidth="3"
+          className="fill-transparent stroke-neutral-300 dark:stroke-neutral-600 font-bold"
+          style={{
+            fontSize: "120px",
+            fontFamily: "system-ui, -apple-system, sans-serif",
+            letterSpacing: "0.05em",
+            fontWeight: "900",
+          }}
           initial={{ strokeDashoffset: 2000, strokeDasharray: 2000 }}
           animate={{
             strokeDashoffset: 0,
             strokeDasharray: 2000,
           }}
           transition={{
-            duration: 2,
+            duration: 2.5,
             ease: "easeInOut",
           }}
         >
           {text}
         </motion.text>
+
+        {/* Gradient overlay text */}
+        {hovered && (
+          <motion.text
+            x="50%"
+            y="50%"
+            textAnchor="middle"
+            dominantBaseline="middle"
+            stroke="url(#textGradientMassive)"
+            strokeWidth="3"
+            mask="url(#textMaskMassive)"
+            className="fill-transparent font-bold"
+            style={{
+              fontSize: "120px",
+              fontFamily: "system-ui, -apple-system, sans-serif",
+              letterSpacing: "0.05em",
+              fontWeight: "900",
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            {text}
+          </motion.text>
+        )}
       </svg>
     </div>
   );
