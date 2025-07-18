@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
+import { TextHoverEffectResponsive } from "./text-hover-effect-responsive";
 
 export const Preloader = ({
   onComplete,
