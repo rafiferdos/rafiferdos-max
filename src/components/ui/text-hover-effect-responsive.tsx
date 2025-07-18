@@ -54,6 +54,17 @@ export const TextHoverEffectResponsive = ({
     return () => window.removeEventListener("resize", calculateDimensions);
   }, [text]);
 
+  // Shared text style to ensure identical sizing
+  const textStyle = {
+    fontSize: `${Math.min(
+      (svgDimensions.width / text.length) * 1.2,
+      svgDimensions.height * 0.6
+    )}px`,
+    fontFamily: "system-ui, -apple-system, sans-serif",
+    letterSpacing: "0.05em",
+    fontWeight: "bold",
+  };
+
   return (
     <div
       className={`w-full h-full flex items-center justify-center ${className}`}
@@ -113,22 +124,17 @@ export const TextHoverEffectResponsive = ({
           </mask>
         </defs>
 
-        {/* Animated stroke text */}
+        {/* Single text element with dynamic stroke */}
         <motion.text
           x="50%"
           y="50%"
           textAnchor="middle"
           dominantBaseline="middle"
           strokeWidth="2"
-          className="fill-transparent stroke-neutral-300 font-bold dark:stroke-neutral-700"
-          style={{
-            fontSize: `${Math.min(
-              (svgDimensions.width / text.length) * 1.2,
-              svgDimensions.height * 0.6
-            )}px`,
-            fontFamily: "system-ui, -apple-system, sans-serif",
-            letterSpacing: "0.05em",
-          }}
+          className="fill-transparent font-bold"
+          style={textStyle}
+          stroke={hovered ? "url(#textGradientResponsive)" : undefined}
+          mask={hovered ? "url(#textMaskResponsive)" : undefined}
           initial={{ strokeDashoffset: 2000, strokeDasharray: 2000 }}
           animate={{
             strokeDashoffset: 0,
@@ -139,6 +145,14 @@ export const TextHoverEffectResponsive = ({
             ease: "easeInOut",
           }}
         >
+          <animate
+            attributeName="stroke"
+            values={
+              hovered ? "url(#textGradientResponsive)" : "#9ca3af;#9ca3af"
+            }
+            dur="0.3s"
+            fill="freeze"
+          />
           {text}
         </motion.text>
       </svg>
