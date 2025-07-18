@@ -41,7 +41,7 @@ export const Preloader = ({
             duration: 0.5,
             ease: "easeInOut",
           }}
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-white dark:bg-gray-900"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-white dark:bg-black"
         >
           {/* Text Container */}
           <div className="relative w-full h-32 sm:h-40 md:h-48 lg:h-56 xl:h-64">

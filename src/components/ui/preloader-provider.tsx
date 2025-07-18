@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { Preloader } from "./preloader";
 
 interface PreloaderContextType {
@@ -30,33 +30,19 @@ export const PreloaderProvider = ({
   showPreloader?: boolean;
 }) => {
   const [isLoading, setIsLoading] = useState(showPreloader);
-  const [hasShownPreloader, setHasShownPreloader] = useState(false);
-
-  useEffect(() => {
-    // Only show preloader once per session
-    const hasShown = sessionStorage.getItem("preloader-shown");
-    if (hasShown) {
-      setIsLoading(false);
-      setHasShownPreloader(true);
-    } else {
-      setHasShownPreloader(false);
-    }
-  }, []);
 
   const handlePreloaderComplete = () => {
     setIsLoading(false);
-    setHasShownPreloader(true);
-    sessionStorage.setItem("preloader-shown", "true");
   };
 
   return (
     <PreloaderContext.Provider value={{ isLoading, setIsLoading }}>
-      {isLoading && !hasShownPreloader && (
+      {isLoading && (
         <Preloader onComplete={handlePreloaderComplete} duration={duration} />
       )}
       <div
         className={
-          isLoading && !hasShownPreloader
+          isLoading
             ? "opacity-0"
             : "opacity-100 transition-opacity duration-300"
         }

@@ -113,27 +113,6 @@ export const TextHoverEffectResponsive = ({
           </mask>
         </defs>
 
-        {/* Base outline text */}
-        <text
-          x="50%"
-          y="50%"
-          textAnchor="middle"
-          dominantBaseline="middle"
-          strokeWidth="2"
-          className="fill-transparent stroke-neutral-200 font-bold dark:stroke-neutral-800"
-          style={{
-            opacity: hovered ? 0.7 : 0,
-            fontSize: `${Math.min(
-              (svgDimensions.width / text.length) * 1.2,
-              svgDimensions.height * 0.6
-            )}px`,
-            fontFamily: "system-ui, -apple-system, sans-serif",
-            letterSpacing: "0.05em",
-          }}
-        >
-          {text}
-        </text>
-
         {/* Animated stroke text */}
         <motion.text
           x="50%"
@@ -162,28 +141,6 @@ export const TextHoverEffectResponsive = ({
         >
           {text}
         </motion.text>
-
-        {/* Gradient fill text with mask */}
-        <text
-          x="50%"
-          y="50%"
-          textAnchor="middle"
-          dominantBaseline="middle"
-          stroke="url(#textGradientResponsive)"
-          strokeWidth="2"
-          mask="url(#textMaskResponsive)"
-          className="fill-transparent font-bold"
-          style={{
-            fontSize: `${Math.min(
-              (svgDimensions.width / text.length) * 1.2,
-              svgDimensions.height * 0.6
-            )}px`,
-            fontFamily: "system-ui, -apple-system, sans-serif",
-            letterSpacing: "0.05em",
-          }}
-        >
-          {text}
-        </text>
       </svg>
     </div>
   );
