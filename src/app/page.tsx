@@ -1,14 +1,12 @@
+import { HeroSection } from "@/components/hero-section";
 import { NavigationWrapper } from "@/components/navigation";
 
 export default function Home() {
   return (
     <main className="min-h-screen">
-      {/* Your page content here */}
-      <section
-        id="home"
-        className="min-h-screen flex items-center justify-center"
-      >
-        <h1 className="text-4xl font-bold">Welcome to My Portfolio</h1>
+      {/* Hero Section */}
+      <section id="home">
+        <HeroSection />
       </section>
 
       <section
