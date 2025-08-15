@@ -15,3 +15,4 @@ export { GradientOrbs } from "./gradient-orbs";
 export { Card3D } from "./3d-card";
 export { ShimmerButton } from "./shimmer-button";
 export { GlitchText } from "./glitch-text";
+export { CursorTrail } from "./cursor-trail";
