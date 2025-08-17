@@ -25,8 +25,8 @@ export function CursorTrail({
       x.set(e.clientX - size / 2);
       y.set(e.clientY - size / 2);
     };
-    window.addEventListener("mousemove", handler, { passive: true } as any);
-    return () => window.removeEventListener("mousemove", handler as any);
+    window.addEventListener("mousemove", handler, { passive: true });
+    return () => window.removeEventListener("mousemove", handler);
   }, [size, x, y]);
 
   return (
