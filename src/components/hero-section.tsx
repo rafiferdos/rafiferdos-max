@@ -7,7 +7,6 @@ import {
   IconBrandLinkedin,
   IconBrandX,
   IconDownload,
-  IconMail,
   IconRocket,
 } from "@tabler/icons-react";
 import { motion } from "motion/react";
