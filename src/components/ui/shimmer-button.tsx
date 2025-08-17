@@ -1,6 +1,6 @@
 "use client";
-import React from "react";
 import { motion } from "motion/react";
+import React from "react";
 
 export function ShimmerButton({
   children,
@@ -48,3 +48,4 @@ export function ShimmerButton({
     </motion.button>
   );
 }
+

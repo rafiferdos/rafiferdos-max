@@ -1,6 +1,6 @@
 "use client";
-import React, { useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
+import React, { useRef } from "react";
 
 export function Card3D({
   children,
@@ -16,8 +16,16 @@ export function Card3D({
   const mouseXSpring = useSpring(x);
   const mouseYSpring = useSpring(y);
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["17.5deg", "-17.5deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-17.5deg", "17.5deg"]);
+  const rotateX = useTransform(
+    mouseYSpring,
+    [-0.5, 0.5],
+    ["17.5deg", "-17.5deg"]
+  );
+  const rotateY = useTransform(
+    mouseXSpring,
+    [-0.5, 0.5],
+    ["-17.5deg", "17.5deg"]
+  );
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
@@ -62,3 +70,4 @@ export function Card3D({
     </motion.div>
   );
 }
+

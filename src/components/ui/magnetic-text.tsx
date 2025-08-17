@@ -1,6 +1,6 @@
 "use client";
+import { motion, useMotionValue, useSpring } from "motion/react";
 import React, { useRef } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 
 export function MagneticText({
   children,
@@ -22,10 +22,10 @@ export function MagneticText({
     const rect = ref.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
-    
+
     const distanceX = e.clientX - centerX;
     const distanceY = e.clientY - centerY;
-    
+
     x.set(distanceX * 0.1);
     y.set(distanceY * 0.1);
   };
@@ -50,3 +50,4 @@ export function MagneticText({
     </motion.div>
   );
 }
+

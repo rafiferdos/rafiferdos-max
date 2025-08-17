@@ -1,7 +1,6 @@
 "use client";
-import React from "react";
-import { motion, useAnimationFrame } from "motion/react";
-import { useRef } from "react";
+import { useAnimationFrame } from "motion/react";
+import React, { useRef } from "react";
 
 export function MovingBorderButton({
   borderRadius = "1.75rem",
@@ -28,12 +27,12 @@ export function MovingBorderButton({
   useAnimationFrame((time) => {
     const length = 400;
     progress.current = (time / duration) % 1;
-    
+
     if (ref.current) {
       const angle = progress.current * Math.PI * 2;
       const x = Math.cos(angle) * 100 + 50;
       const y = Math.sin(angle) * 100 + 50;
-      
+
       ref.current.style.background = `conic-gradient(from ${angle}rad at ${x}% ${y}%, #3b82f6, #8b5cf6, #ec4899, #3b82f6)`;
     }
   });
@@ -64,3 +63,4 @@ export function MovingBorderButton({
     </Component>
   );
 }
+

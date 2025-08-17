@@ -16,7 +16,7 @@ export const TypewriterEffect = ({
 }) => {
   const [scope, animate] = useAnimate();
   const isInView = useInView(scope);
-  
+
   useEffect(() => {
     if (isInView) {
       animate(
@@ -43,7 +43,9 @@ export const TypewriterEffect = ({
                 <motion.span
                   initial={{ opacity: 0, filter: "blur(10px)" }}
                   key={`char-${index}`}
-                  className={`dark:text-white text-black ${word.className || ""}`}
+                  className={`dark:text-white text-black ${
+                    word.className || ""
+                  }`}
                 >
                   {char}
                 </motion.span>
@@ -57,7 +59,9 @@ export const TypewriterEffect = ({
   };
 
   return (
-    <div className={`text-base sm:text-xl md:text-3xl lg:text-5xl font-bold text-center ${className}`}>
+    <div
+      className={`text-base sm:text-xl md:text-3xl lg:text-5xl font-bold text-center ${className}`}
+    >
       {renderWords()}
       <motion.span
         initial={{ opacity: 0 }}
@@ -72,3 +76,4 @@ export const TypewriterEffect = ({
     </div>
   );
 };
+

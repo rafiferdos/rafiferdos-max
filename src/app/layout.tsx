@@ -1,7 +1,7 @@
 import { SmoothScrollProvider } from "@/components/navigation/smooth-scroll";
 import { ThemeProvider } from "@/components/providers/theme-provider";
-import { PreloaderProvider } from "@/components/ui/preloader-provider";
 import { CursorTrail } from "@/components/ui/cursor-trail";
+import { PreloaderProvider } from "@/components/ui/preloader-provider";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Uncial_Antiqua } from "next/font/google";
 import "./globals.css";
@@ -44,7 +44,11 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <PreloaderProvider duration={2000}>
-            <CursorTrail color="rgba(59, 130, 246, 0.5)" size={30} duration={0.8} />
+            <CursorTrail
+              color="rgba(0, 255, 255, 0.6)"
+              size={25}
+              duration={0.6}
+            />
             <SmoothScrollProvider>{children}</SmoothScrollProvider>
           </PreloaderProvider>
         </ThemeProvider>

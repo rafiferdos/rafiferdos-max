@@ -1,6 +1,6 @@
 "use client";
-import React, { useRef, useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "motion/react";
+import React, { useEffect, useRef, useState } from "react";
 
 interface Particle {
   x: number;
@@ -31,7 +31,7 @@ export function ParticleField({
 
   useEffect(() => {
     if (!containerRef.current) return;
-    
+
     const updateDimensions = () => {
       if (containerRef.current) {
         setDimensions({
@@ -40,19 +40,19 @@ export function ParticleField({
         });
       }
     };
-    
+
     updateDimensions();
     window.addEventListener("resize", updateDimensions);
-    
+
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
   useEffect(() => {
     if (dimensions.width === 0 || dimensions.height === 0) return;
-    
+
     const newParticles: Particle[] = [];
     const colors = ["#3b82f6", "#8b5cf6", "#ec4899", "#06b6d4", "#10b981"];
-    
+
     for (let i = 0; i < particleCount; i++) {
       newParticles.push({
         x: Math.random() * dimensions.width,
@@ -64,7 +64,7 @@ export function ParticleField({
         opacity: Math.random() * 0.5 + 0.3,
       });
     }
-    
+
     setParticles(newParticles);
   }, [dimensions, particleCount]);
 
@@ -117,14 +117,15 @@ export function ParticleField({
           }}
         />
       ))}
-      
+
       {interactive && (
         <motion.div
           className="absolute w-32 h-32 rounded-full"
           style={{
             x: smoothMouseX,
             y: smoothMouseY,
-            background: "radial-gradient(circle, rgba(59,130,246,0.3) 0%, transparent 70%)",
+            background:
+              "radial-gradient(circle, rgba(59,130,246,0.3) 0%, transparent 70%)",
             transform: "translate(-50%, -50%)",
             pointerEvents: "none",
           }}
@@ -133,3 +134,4 @@ export function ParticleField({
     </div>
   );
 }
+

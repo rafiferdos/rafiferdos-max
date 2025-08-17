@@ -41,7 +41,7 @@ export const AuroraBackground = ({
             className="h-full w-full blur-[100px] saturate-150"
           />
         </div>
-        
+
         <div
           className={`
             [--aurora:repeating-linear-gradient(150deg,var(--violet-500)_10%,var(--purple-300)_15%,var(--blue-300)_20%,var(--indigo-200)_25%,var(--violet-400)_30%)]
@@ -75,3 +75,4 @@ export const AuroraBackground = ({
     </div>
   );
 };
+
