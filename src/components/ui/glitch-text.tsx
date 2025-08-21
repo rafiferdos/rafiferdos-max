@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import { motion } from "motion/react";
 
 export interface GlitchTextProps {
@@ -9,7 +8,11 @@ export interface GlitchTextProps {
 }
 
 // Lightweight glitch-style text, safe for production use.
-export function GlitchText({ text, className = "", intensity = 1 }: GlitchTextProps) {
+export function GlitchText({
+  text,
+  className = "",
+  intensity = 1,
+}: GlitchTextProps) {
   const offset = 0.6 * intensity;
   return (
     <div className={`relative inline-block ${className}`} aria-label={text}>
@@ -18,7 +21,11 @@ export function GlitchText({ text, className = "", intensity = 1 }: GlitchTextPr
         aria-hidden
         className="absolute inset-0 z-0 text-cyan-400/50 mix-blend-screen"
         initial={{ x: 0, y: 0, opacity: 0.3 }}
-        animate={{ x: [0, -offset, 0], y: [0, offset, 0], opacity: [0.2, 0.4, 0.2] }}
+        animate={{
+          x: [0, -offset, 0],
+          y: [0, offset, 0],
+          opacity: [0.2, 0.4, 0.2],
+        }}
         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
       >
         {text}
@@ -27,8 +34,17 @@ export function GlitchText({ text, className = "", intensity = 1 }: GlitchTextPr
         aria-hidden
         className="absolute inset-0 z-0 text-pink-400/50 mix-blend-screen"
         initial={{ x: 0, y: 0, opacity: 0.3 }}
-        animate={{ x: [0, offset, 0], y: [0, -offset, 0], opacity: [0.2, 0.4, 0.2] }}
-        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.15 }}
+        animate={{
+          x: [0, offset, 0],
+          y: [0, -offset, 0],
+          opacity: [0.2, 0.4, 0.2],
+        }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 0.15,
+        }}
       >
         {text}
       </motion.span>

@@ -1,6 +1,6 @@
 "use client";
 import { motion, useMotionValue, useSpring } from "motion/react";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 export interface CursorTrailProps {
   color?: string;

@@ -1,5 +1,13 @@
 "use client";
-import { AuroraBackground, HolographicCard, MovingBorderButton, ParticleField, ShimmerButton, Spotlight, TypewriterEffect } from "@/components/ui";
+import {
+  AuroraBackground,
+  HolographicCard,
+  MovingBorderButton,
+  ParticleField,
+  ShimmerButton,
+  Spotlight,
+  TypewriterEffect,
+} from "@/components/ui";
 import {
   IconArrowDown,
   IconBrandDiscord,
@@ -32,10 +40,20 @@ export function HeroSection() {
   ];
 
   return (
-    <AuroraBackground className="min-h-screen relative overflow-hidden" aria-label="Hero section">
+    <AuroraBackground
+      className="min-h-screen relative overflow-hidden"
+      aria-label="Hero section"
+    >
       {/* Subtle ambience */}
-      <Spotlight className="absolute inset-0 -z-0" spotlightColor="#4f46e5" spotlightIntensity={70} />
-      <ParticleField particleCount={24} className="pointer-events-none opacity-40" />
+      <Spotlight
+        className="absolute inset-0 -z-0"
+        spotlightColor="#4f46e5"
+        spotlightIntensity={70}
+      />
+      <ParticleField
+        particleCount={24}
+        className="pointer-events-none opacity-40"
+      />
 
       <div className="container mx-auto px-6 lg:px-10 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_.9fr] gap-12 lg:gap-16 items-center min-h-[88vh] py-20">
@@ -48,7 +66,10 @@ export function HeroSection() {
           >
             {/* Eyebrow */}
             <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 dark:bg-white/5 backdrop-blur-2xl px-3 py-1 text-xs text-zinc-600 dark:text-zinc-300">
-              <span className="inline-flex h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_2px_rgba(16,185,129,0.7)]" aria-hidden />
+              <span
+                className="inline-flex h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_2px_rgba(16,185,129,0.7)]"
+                aria-hidden
+              />
               <span className="font-medium">Available for collaborations</span>
             </div>
 
@@ -63,14 +84,18 @@ export function HeroSection() {
                 <TypewriterEffect words={roles} />
               </div>
               <p className="max-w-2xl text-base sm:text-lg leading-relaxed text-zinc-600/90 dark:text-zinc-300/80">
-                I craft elegant, performant web experiences with a focus on accessibility,
-                scalability, and delightful micro‑interactions. Minimal aesthetics, maximum impact.
+                I craft elegant, performant web experiences with a focus on
+                accessibility, scalability, and delightful micro‑interactions.
+                Minimal aesthetics, maximum impact.
               </p>
             </div>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-              <ShimmerButton className="px-7 py-3 text-sm font-semibold" aria-label="View projects">
+              <ShimmerButton
+                className="px-7 py-3 text-sm font-semibold"
+                aria-label="View projects"
+              >
                 <span className="flex items-center gap-2">
                   <IconRocket className="h-5 w-5" />
                   View Projects
@@ -122,7 +147,9 @@ export function HeroSection() {
                     className="rounded-full border border-white/10 bg-white/5 dark:bg-white/5 backdrop-blur-xl px-3 py-1 text-zinc-700 dark:text-zinc-200"
                     aria-label={`${chip.k}: ${chip.v}`}
                   >
-                    <span className="text-zinc-500 dark:text-zinc-400 mr-1">{chip.k}:</span>
+                    <span className="text-zinc-500 dark:text-zinc-400 mr-1">
+                      {chip.k}:
+                    </span>
                     <span className="font-medium">{chip.v}</span>
                   </div>
                 ))}
@@ -150,7 +177,7 @@ export function HeroSection() {
                   alt="Portrait of Rafi Ferdos"
                   fill
                   priority
-                  className="object-cover object-center scale-[1.02]" 
+                  className="object-cover object-center scale-[1.02]"
                 />
 
                 {/* Glass overlays */}
@@ -176,7 +203,9 @@ export function HeroSection() {
         {/* Scroll cue */}
         <motion.button
           aria-label="Scroll to content"
-          onClick={() => window.scrollTo({ top: window.innerHeight, behavior: "smooth" })}
+          onClick={() =>
+            window.scrollTo({ top: window.innerHeight, behavior: "smooth" })
+          }
           className="group mx-auto mb-10 flex items-center gap-2 rounded-full border border-white/10 bg-white/5 dark:bg-white/5 px-4 py-2 text-xs text-zinc-600 dark:text-zinc-300 backdrop-blur-xl"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
